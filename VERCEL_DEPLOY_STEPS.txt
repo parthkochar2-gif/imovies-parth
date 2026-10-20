@@ -1,0 +1,14 @@
+IMOVIES — QUICK VERCEL DEPLOY
+
+1. Unzip imovies-vercel.zip.
+2. Upload the contents of the imovies-vercel folder to a GitHub repository.
+3. Import that repository at https://vercel.com/new
+4. In Vercel → Project → Settings → Environment Variables, add:
+   MONGODB_URI = your MongoDB Atlas connection string (database name: imovies)
+   JWT_SECRET = a long random secret string
+5. Deploy / redeploy.
+6. Open https://YOUR-PROJECT.vercel.app/api/health and check databaseConfigured is true.
+7. Test create account → sign in → choose movie → select seats → confirm booking.
+
+Without MONGODB_URI and JWT_SECRET, the UI can load but real registration and persistent bookings will not work.
+Never commit credentials or .env to GitHub.
