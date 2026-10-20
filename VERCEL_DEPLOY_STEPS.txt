@@ -1,9 +1,9 @@
 IMOVIES — QUICK VERCEL DEPLOY
 
 1. Unzip imovies-vercel.zip.
-2. Upload the contents of the imovies-vercel folder to a GitHub repository.
-3. Import that repository at https://vercel.com/new
-4. In Vercel → Project → Settings → Environment Variables, add:
+2. Upload the contents of the imovies-vercel folder to a GitHub repository. The repository root must contain package.json, vercel.json, api/, and src/.
+3. Import that repository at https://vercel.com/new. The frontend and /api/* backend deploy together as one Vercel project.
+4. In Vercel → Project → Settings → Environment Variables, add for Production, Preview, and Development:
    MONGODB_URI = your MongoDB Atlas connection string (database name: imovies)
    JWT_SECRET = a long random secret string
 5. Deploy / redeploy.

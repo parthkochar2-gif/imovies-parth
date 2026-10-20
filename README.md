@@ -1,6 +1,6 @@
 # IMovies — Movie Ticket Booking
 
-A responsive movie-ticket booking demo built with React, Vite, Express, MongoDB, JWT, and bcrypt. The repository is structured for a **single Vercel deployment**: the React frontend is built into `dist/`, and the Express API is served from `api/index.js` as a Vercel serverless function.
+A responsive movie-ticket booking demo built with React, Vite, Express, MongoDB, JWT, and bcrypt. The repository is structured for a **single Vercel deployment**: the React frontend is built into `dist/`, and the Express API is served from `api/[...route].js` as a Vercel serverless function.
 
 ## Features
 
@@ -17,12 +17,12 @@ A responsive movie-ticket booking demo built with React, Vite, Express, MongoDB,
 1. Download and unzip this project.
 2. Push the **contents of the `imovies-vercel` folder** to a new GitHub repository, or import the folder/repository into Vercel.
 3. In Vercel, select **Add New → Project** and import the repository.
-4. Keep the default Vite build settings. The included `vercel.json` sets `npm run build` and `dist` as the output directory.
-5. Before deploying, add these Environment Variables in **Project → Settings → Environment Variables**:
+4. Set the **Root Directory** to the folder containing `package.json`, `api/`, and `src/`. Keep the build command `npm run build` and output directory `dist` (also set by `vercel.json`).
+5. Add these Environment Variables in **Project → Settings → Environment Variables** for Production, Preview, and Development:
    - `MONGODB_URI` — your MongoDB Atlas connection string
    - `JWT_SECRET` — a long, random secret string
 6. In MongoDB Atlas, create a database user, allow network access for your deployment (for a student demo, Atlas's IP access settings may require `0.0.0.0/0`; use a strong database password), and copy the connection string. Replace its username/password placeholders and use the database name `imovies`.
-7. Deploy. If you add/change environment variables after deployment, redeploy the project.
+7. Deploy. If you add/change environment variables after deployment, redeploy the project. The frontend and `/api/*` backend deploy together from this one project.
 8. Check `https://YOUR-DEPLOYMENT.vercel.app/api/health`. The JSON response should show `status: "ok"` and `databaseConfigured: true` once the environment variable is set. Then test registration, login, and booking.
 
 ## Local development
@@ -38,7 +38,7 @@ The Vite frontend runs at `http://localhost:5173`. To run the API locally as wel
 
 ## Environment variables
 
-See `.env.example`. Never commit `.env`, database credentials, or JWT secrets to GitHub.
+For local development, copy `.env.example` to `.env` and fill in your own values. Never commit `.env`, database credentials, or JWT secrets to GitHub. The frontend can load without these values, but registration, login, and persistent bookings require both variables.
 
 ## API endpoints
 
