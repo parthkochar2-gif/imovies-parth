@@ -6,9 +6,12 @@ IMOVIES — QUICK VERCEL DEPLOY
 4. In Vercel → Project → Settings → Environment Variables, add for Production, Preview, and Development:
    MONGODB_URI = your MongoDB Atlas connection string (database name: imovies)
    JWT_SECRET = a long random secret string
+   ADMIN_EMAIL = the administrator login email
+   ADMIN_PASSWORD = a private password of at least 12 characters
 5. Deploy / redeploy.
-6. Open https://YOUR-PROJECT.vercel.app/api/health and check databaseConfigured is true.
-7. Test create account → sign in → choose movie → select seats → confirm booking.
+6. Open https://YOUR-PROJECT.vercel.app/api/health and check databaseConnected is true.
+7. Sign in using ADMIN_EMAIL and ADMIN_PASSWORD to open the admin dashboard.
+8. Test create account → sign in → choose movie → select seats → confirm booking.
 
-Without MONGODB_URI and JWT_SECRET, the UI can load but real registration and persistent bookings will not work.
+Without MONGODB_URI and JWT_SECRET, the UI can load but real registration and persistent bookings will not work. Keep ADMIN_PASSWORD private.
 Never commit credentials or .env to GitHub.
