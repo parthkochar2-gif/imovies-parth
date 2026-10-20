@@ -23,7 +23,7 @@ A responsive movie-ticket booking demo built with React, Vite, Express, MongoDB,
    - `JWT_SECRET` — a long, random secret string
 6. In MongoDB Atlas, create a database user, allow network access for your deployment (for a student demo, Atlas's IP access settings may require `0.0.0.0/0`; use a strong database password), and copy the connection string. Replace its username/password placeholders and use the database name `imovies`.
 7. Deploy. If you add/change environment variables after deployment, redeploy the project. The frontend and `/api/*` backend deploy together from this one project.
-8. Check `https://YOUR-DEPLOYMENT.vercel.app/api/health`. The JSON response should show `status: "ok"` and `databaseConfigured: true` once the environment variable is set. Then test registration, login, and booking.
+8. Check `https://YOUR-DEPLOYMENT.vercel.app/api/health`. A successful response shows `status: "ok"`, `databaseConfigured: true`, and `databaseConnected: true`. Then test registration, login, and booking.
 
 ## Local development
 
@@ -34,7 +34,7 @@ npm install
 npm run dev
 ```
 
-The Vite frontend runs at `http://localhost:5173`. To run the API locally as well, use a Vercel-compatible local runtime (for example `npx vercel dev`) after configuring `.env` with `MONGODB_URI` and `JWT_SECRET`.
+The frontend and API run together at `http://localhost:5173`. Copy `.env.example` to `.env` and set `MONGODB_URI` and `JWT_SECRET` to enable registration, login, and persistent bookings. Check `http://localhost:5173/api/health` to confirm MongoDB connectivity.
 
 ## Environment variables
 
@@ -42,7 +42,7 @@ For local development, copy `.env.example` to `.env` and fill in your own values
 
 ## API endpoints
 
-- `GET /api/health` — API status
+- `GET /api/health` — API status and MongoDB connectivity
 - `POST /api/auth/register` — `{ "name", "email", "password" }`
 - `POST /api/auth/login` — `{ "email", "password" }`
 - `GET /api/bookings` — requires `Authorization: Bearer <token>`
