@@ -38,7 +38,7 @@ npm install
 npm run dev
 ```
 
-The frontend and API run together at `http://localhost:5173`. Copy `.env.example` to `.env`, set `MONGODB_URI` and `JWT_SECRET`, and set private `ADMIN_EMAIL` and `ADMIN_PASSWORD` values to enable the admin dashboard. Check `http://localhost:5173/api/health` to confirm MongoDB connectivity.
+The frontend and API run together at `http://localhost:5173`. Copy `.env.example` to `.env`, set `MONGODB_URI` and `JWT_SECRET`, and set private `ADMIN_EMAIL` and `ADMIN_PASSWORD` values to enable the admin dashboard. After adding the current machine's IP address in MongoDB Atlas → Network Access, run `npm run admin:create` to create or promote that account directly in MongoDB. Check `http://localhost:5173/api/health` to confirm MongoDB connectivity.
 
 ## Environment variables
 
